@@ -192,9 +192,8 @@ If you enjoy **Kobo Highlights Exporter**, you can give the project some love:
 - 🫶 **Share** it with your Kobo-loving friends  
 - ☕ **Buy me a coffee** if you feel generous
 
-<p align="center">
   [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/unripe_apple)
-</p>
+
  
 ## 🧾 License
 
