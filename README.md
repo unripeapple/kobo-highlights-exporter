@@ -6,7 +6,7 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 <img src="docs/images/header.png" width="700">  
 </p>
 
-##📑 Table of Contents</strong></summary>
+##📑 Table of Contents
 
 - [🎯 Why Kobo Highlights Exporter](#why-kobo-highlights-exporter)
 - [💡 Usage](#usage)
@@ -181,6 +181,7 @@ Why it works especially well:
 <p align="center">  
 <img src="docs/images/obsidian.png" width="750">  
 </p>
+
 ## 💗 Support
 
 If you enjoy **Kobo Highlights Exporter**, you can give the project some love:
