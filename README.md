@@ -6,9 +6,8 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 <img src="docs/images/header.png" width="700">  
 </p>
 
-<details open>
-<summary><strong>📑 Table of Contents</strong></summary>
-<br>
+##📑 Table of Contents</strong></summary>
+
 - [🎯 Why Kobo Highlights Exporter](#why-kobo-highlights-exporter)
 - [💡 Usage](#usage)
 - [🌟 Features](#features)
@@ -18,8 +17,6 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 - [✨ Recommended Markdown Viewer](#recommended-markdown-viewer)
 - [💖 Support](#support)
 - [🧾 License](#license)
-
-</details>
 
 ## 🎯 Why Kobo Highlights Exporter
 
