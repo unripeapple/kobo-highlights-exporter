@@ -8,21 +8,15 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 
 ## 📑 Table of Contents
 
-- [🎯 Why Kobo Highlights Exporter](#---why-kobo-highlights-exporter)
-- [💡 Usage](#---usage)
-- [🌟 Features](#---features)
-- [⚙️ Installation](#---installation)
-- [🪄 How It Works](#---how-it-works)
-    + [Handling Sideloaded Books](#handling-sideloaded-books)
-    + [Handling Minor Database Issues](#handling-minor-database-issues)
-    + [Summary](#summary)
--  [✅ Supported Devices](#--supported-devices)
-- [✨ Recommended Markdown Viewer](#--recommended-markdown-viewer)
-- [💗 Support](#---support)
-- [🧾 License](#---license)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
+- [🎯 Why Kobo Highlights Exporter](#why-kobo-highlights-exporter)
+- [💡 Usage](#usage)
+- [🌟 Features](#features)
+- [⚙️ Installation](#installation)
+- [🪄 How It Works](#how-it-works)
+- [✅ Supported Devices](#supported-devices)
+- [✨ Recommended Markdown Viewer](#recommended-markdown-viewer)
+- [💗 Support](#support)
+- [🧾 License](#license)
 
 ## 🎯 Why Kobo Highlights Exporter
 
@@ -81,8 +75,8 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 |    Sideloaded KEPUB    |         ✅         |          ✅           |       ✅        |   ✅   |  ✅   |   ✅   |
 |    Sideloaded EPUB     |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
 | Adobe Digital Editions |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
->📢 *Kobo's database treats EPUBs differently from KEPUBs, so chapter location (%) is not available for EPUBs. 
->📢 *PDF files are not supported.
+>ⓘ *Kobo's database treats EPUBs differently from KEPUBs, so chapter location (%) is not available for EPUBs.* 
+>ⓘ *PDF files are not supported.*
 
 <p align="center">  
 <img src="docs/images/output.png" width="750">  
@@ -100,7 +94,7 @@ Even if you **don’t have the device**, you can export highlights if your frien
 <img src="docs/images/bonusfeature.png" width="750">  
 </p>
 
->📌 Limitations for the bonus feature:
+>ⓘ Limitations for the bonus feature:
 >- For **sideloaded books**, the database may lack correct chapter titles linked to the highlights, resulting in **'Unknown chapter'**.  In these cases, the app may need a **connected Kobo** to read the TOC directly from the book to find the real chapter title.
 >- The tool is intended to work **optimally** when the Kobo device is connected.    
 >- There are **no limitations** for **Kobo Store** and **Overdrive** books  👌
