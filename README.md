@@ -8,15 +8,21 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 
 ## 📑 Table of Contents
 
-- [🎯 Why Kobo Highlights Exporter](#why-kobo-highlights-exporter)
-- [💡 Usage](#usage)
-- [🌟 Features](#features)
-- [⚙️ Installation](#️installation)
-- [🪄 How It Works](#how-it-works)
-- [✅ Supported Devices](#supported-devices)
-- [✨ Recommended Markdown Viewer](#recommended-markdown-viewer)
-- [💖 Support](#support)
-- [🧾 License](#license)
+- [🎯 Why Kobo Highlights Exporter](#---why-kobo-highlights-exporter)
+- [💡 Usage](#---usage)
+- [🌟 Features](#---features)
+- [⚙️ Installation](#---installation)
+- [🪄 How It Works](#---how-it-works)
+    + [Handling Sideloaded Books](#handling-sideloaded-books)
+    + [Handling Minor Database Issues](#handling-minor-database-issues)
+    + [Summary](#summary)
+-  [✅ Supported Devices](#--supported-devices)
+- [✨ Recommended Markdown Viewer](#--recommended-markdown-viewer)
+- [💗 Support](#---support)
+- [🧾 License](#---license)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## 🎯 Why Kobo Highlights Exporter
 
