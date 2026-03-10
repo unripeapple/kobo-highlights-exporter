@@ -28,21 +28,21 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 
 Other exporter tools, including the official one, are either limited or paid (or both!). And something important is always missing:
 
-❌ No book location per highlight (Important if you later reference the physical book!)
-❌ Unreliable chapter location (if any)
-❌ Missing or broken chapter titles
-❌ Frequent issues with sideloaded books (discrimination! 🙈)
-❌ Possible fees 
+❌ No book location per highlight (Important if you later reference the physical book!)  
+❌ Unreliable chapter location (if any)  
+❌ Missing or broken chapter titles  
+❌ Frequent issues with sideloaded books (discrimination! 🙈)  
+❌ Possible fees   
 
 How Kobo Highlights Exporter does it better
 
-✅️ Precise book location (%)
-✅️ Precise chapter location (%)
-✅️ Correct chapter titles
-✅️ Supports most books
-✅️ Colored highlights supported
-✅️ Works offline
-✅️ Free!
+✅️ Precise book location (%)  
+✅️ Precise chapter location (%)  
+✅️ Correct chapter titles  
+✅️ Supports most books  
+✅️ Colored highlights supported  
+✅️ Works offline  
+✅️ Free!  
 
 ## 💡 Usage
 
