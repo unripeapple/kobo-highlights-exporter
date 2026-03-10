@@ -11,7 +11,7 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 - [🎯 Why Kobo Highlights Exporter](#-why-kobo-highlights-exporter)
 - [💡 Usage](#-usage)
 - [🌟 Features](#-features)
-- [⚙️ Installation](#-installation)
+- [⚙️ Installation](#%EF%B8%8F-installation)
 - [🪄 How It Works](#-how-it-works)
 - [✅ Supported Devices](#-supported-devices)
 - [✨ Recommended Markdown Viewer](#-recommended-markdown-viewer)
@@ -138,6 +138,7 @@ In these cases, Kobo Highlights Exporter **falls back to reading the TOC directl
 <p align="center">
 🖥️    ➔    🔍📄   ➔    ⚠️    ➔    🔍📖     ➔     ✅
 </p>
+
 ### Handling Minor Database Issues 
   
 Even “well-formatted” Kobo Store or Overdrive books can occasionally have:  
@@ -148,6 +149,7 @@ When this happens, the tool uses an **additional fallback** to find and fix the 
 <p align="center">
 🖥️     ➔     🔍📄    ➔     ⚠️     ➔     🔍 💡📄     ➔     ✅
 </p>
+
 ### Summary  
   
 Kobo Highlights Exporter **tries to look under every rock** for the information you need. It can **predict and fix most common errors on the fly**.    
@@ -191,9 +193,7 @@ If you enjoy **Kobo Highlights Exporter**, you can give the project some love:
 - ☕ **Buy me a coffee** if you feel generous
 
 <p align="center">
-
   [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/unripe_apple)
-
 </p>
  
 ## 🧾 License
