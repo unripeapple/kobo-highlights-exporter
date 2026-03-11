@@ -1,6 +1,6 @@
 # 📕📥 Kobo Highlights Exporter
 
-Extract and export highlights and notes from your Kobo eReader into a Markdown file.
+Extract and export highlights and notes from your Kobo eReader into Markdown files.
 
 <p align="center">  
 <img src="docs/images/header.png" width="700">  
@@ -89,7 +89,7 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 
 Even if you **don’t have the device**, you can export highlights if your friend sends you a copy of their database (`KoboReader.sqlite` inside `.kobo`).
 
-1. Run the app (no Kobo device needed)  
+1. Launch the app (no Kobo device needed)  
 2. Click **"Browse for Kobo file"**  
 3. Search for the copy of `KoboReader.sqlite` (must be named exactly)  
 4. Export highlights normally
