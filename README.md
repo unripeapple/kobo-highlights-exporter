@@ -71,7 +71,6 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 
 📊 What you can export from your books (besides highlights)
 
-<style scoped>
 |       Book Type        | Book location (%) | Chapter location (%) | Chapter Titles | Notes | Date | Color |
 | :--------------------: | :---------------: | :------------------: | :------------: | :---: | :--: | :---: |
 |    Kobo Store book     |         ✅         |          ✅           |       ✅        |   ✅   |  ✅   |   ✅   |
@@ -79,11 +78,6 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 |    Sideloaded KEPUB    |         ✅         |          ✅           |       ✅        |   ✅   |  ✅   |   ✅   |
 |    Sideloaded EPUB     |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
 | Adobe Digital Editions |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
-{
-  font-size: 13px;
-}
-</style>
-
 >🛈 *Kobo's database treats EPUBs differently from KEPUBs, so chapter location (%) is not available for EPUBs.*   
 >🛈 *PDF files are not supported.*
 
