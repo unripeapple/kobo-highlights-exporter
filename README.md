@@ -7,7 +7,7 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 </p>
 
 <details open>
-##📑 Table of Contents
+<summary><h2>📑 Table of Contents</h2></summary>
 
 - [🎯 Why Kobo Highlights Exporter](#-why-kobo-highlights-exporter)
 - [💡 Usage](#-usage)
