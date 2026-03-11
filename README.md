@@ -56,7 +56,7 @@ Done! Now you have your highlights in a `Book Title.md` format for you to handle
 <img src="docs/images/usage.png" width="750">  
 </p>
 
-## 🌟 Features
+## 🎯 Features
 
 Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexible and precise**.
 
