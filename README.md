@@ -48,7 +48,7 @@ How Kobo Highlights Exporter does it better
 3. Select the books you want to export highlights from.  You can search, sort, or select them all at once.
 4. Choose your **Screen Type**: `BW` or `Color`.   (Select `Color` if your device supports color highlights.)
 5. Choose the folder where the Markdown files will be saved.
-6. Click `**Export Highlights**`.
+6. Click `Export Highlights`.
 
 Done! Now you have your highlights in a `Book Title.md` format for you to handle however you want.
 
@@ -90,7 +90,7 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 Even if you **don’t have the device**, you can export highlights if your friend sends you a copy of their database (`KoboReader.sqlite` inside `.kobo`).
 
 1. Launch the app (no Kobo device needed)  
-2. Click `**"Browse for Kobo file"**`  
+2. Click `Browse for Kobo file`  
 3. Search for the copy of `KoboReader.sqlite` (must be named exactly)  
 4. Export highlights normally
 <p align="center">  
