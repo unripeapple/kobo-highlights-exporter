@@ -58,7 +58,7 @@ Done! Now you have your highlights in a `Book Title.md` format for you to handle
 
 ## 🌟 Features
 
-Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexible, and precise**.
+Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexible and precise**.
 
 - 🚀 Extract highlights text from Kobo database  
 - 📝 Extract notes text from Kobo database
