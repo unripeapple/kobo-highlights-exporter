@@ -17,7 +17,7 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 - [✅ Supported Devices](#-supported-devices)
 - [✨ Recommended Markdown Viewer](#-recommended-markdown-viewer)
 - [💗 Support](#-support)
-- [🛡️ Privacy](#-privacy)
+- [🛡️ Privacy](#%EF%B8%8F-privacy)
 - [🧾 License](#-license)
 </details>
 
