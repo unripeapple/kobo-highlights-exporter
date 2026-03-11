@@ -77,7 +77,7 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 | Overdrive (libby) loan |         ✅         |          ✅           |       ✅        |   ✅   |  ✅   |   ✅   |
 |    Sideloaded KEPUB    |         ✅         |          ✅           |       ✅        |   ✅   |  ✅   |   ✅   |
 |    Sideloaded EPUB     |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
-| Adobe Digital Editions |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
+| #####Adobe Digital Editions |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
 >🛈 *Kobo's database treats EPUBs differently from KEPUBs, so chapter location (%) is not available for EPUBs.*   
 >🛈 *PDF files are not supported.*
 
