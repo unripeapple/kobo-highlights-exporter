@@ -17,6 +17,7 @@ Extract and export highlights and notes from your Kobo eReader into a Markdown f
 - [✅ Supported Devices](#-supported-devices)
 - [✨ Recommended Markdown Viewer](#-recommended-markdown-viewer)
 - [💗 Support](#-support)
+- [🛡️ Privacy](#-privacy)
 - [🧾 License](#-license)
 </details>
 
@@ -127,6 +128,9 @@ Kobo stores highlights in a **SQLite database** on the device: `.kobo/KoboReader
 - Chapter location %  
 - Color labels (for color device users)
 
+> 🛈 Kobo Highlights Exporter **never** modifies your original database.  
+> The app works with a **temporary copy**, so your Kobo device remains completely safe.
+
 ### Handling Sideloaded Books
 
 Sideloaded books are **not as standardized** as Kobo Store books.  The database may store information inconsistently or in unusual formats. Examples include:
@@ -196,6 +200,14 @@ If you enjoy **Kobo Highlights Exporter**, you can give the project some love:
 
   [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/unripe_apple)
 
+## 🛡️ Privacy  
+  
+**Kobo Highlights Exporter** only uses an internet connection for two things:  
+  
+- 🔄 **Checking for updates** when the app starts  
+- ☕ **Opening the donation page** when you click the `Donate` button  
+  
+No highlights, books, or personal data are ever uploaded. **Everything else stays local on your computer.**
  
 ## 🧾 License
 
