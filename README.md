@@ -9,9 +9,9 @@ Extract and export highlights and notes from your Kobo eReader into Markdown fil
 <details open>
 <summary><h2>📑 Table of Contents</h2></summary>
 
-- [🎯 Why Kobo Highlights Exporter](#-why-kobo-highlights-exporter)
+- [⭐ Why Kobo Highlights Exporter](#-why-kobo-highlights-exporter)
 - [💡 Usage](#-usage)
-- [🌟 Features](#-features)
+- [🎯 Features](#-features)
 - [⚙️ Installation](#%EF%B8%8F-installation)
 - [🪄 How It Works](#-how-it-works)
 - [✅ Supported Devices](#-supported-devices)
@@ -21,7 +21,7 @@ Extract and export highlights and notes from your Kobo eReader into Markdown fil
 - [🧾 License](#-license)
 </details>
 
-## 🎯 Why Kobo Highlights Exporter
+## ⭐ Why Kobo Highlights Exporter
 
 Other exporter tools, including the official one, are either limited or paid (or both!). And something important is always missing:
 
