@@ -187,6 +187,7 @@ Why it works especially well:
 <p align="center">  
 <img src="docs/images/obsidian.png" width="900">  
 </p>
+
 > ⚠️ **Note for Notion users:** color labels for highlights are currently **not visible in Notion**.
 
 ## 💗 Support
