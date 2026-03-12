@@ -35,6 +35,14 @@ jobs:
           asset_name: KoboHighlightsExporter-${{ github.event.release.tag_name }}-Windows-x64.exe
           asset_content_type: application/vnd.microsoft.portable-executable
 
+      - name: Upload README.md as asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: README.md
+          asset_name: KoboHighlightsExporter-${{ github.event.release.tag_name }}-README.md
+          asset_content_type: text/markdown
+
   build-macos:
     runs-on: macos-latest
 
@@ -56,18 +64,18 @@ jobs:
       - name: Build macOS App
         run: pyinstaller "Kobo Highlights Exporter.spec"
 
-      - name: Zip macOS app
+      - name: Zip macOS app with README
         run: |
           cd dist
-          zip -r KoboHighlightsExporter-${{ github.ref_name }}-macOS.zip "Kobo Highlights Exporter.app"
-          "../../README.md"
+          zip -r KoboHighlightsExporter-${{ github.event.release.tag_name }}-macOS.zip \
+            "Kobo Highlights Exporter.app" "../../README.md"
 
       - name: Upload macOS release asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: dist/KoboHighlightsExporter-${{ github.event.release.tag_name }}-macOS.zip
-          asset_name: KoboHighlightsExporter-${{ github.ref_name }}-macOS.zip
+          asset_name: KoboHighlightsExporter-${{ github.event.release.tag_name }}-macOS.zip
           asset_content_type: application/zip
 
   build-linux:
@@ -91,16 +99,16 @@ jobs:
       - name: Build Linux binary
         run: pyinstaller "Kobo Highlights Exporter.spec"
 
-      - name: Tar Linux binary
+      - name: Tar Linux binary with README
         run: |
           cd dist
-          tar czf KoboHighlightsExporter-${{ github.ref_name }}-Linux.tar.gz "Kobo Highlights Exporter"
-          "../../README.md"
+          tar czf KoboHighlightsExporter-${{ github.event.release.tag_name }}-Linux.tar.gz \
+            "Kobo Highlights Exporter" "../../README.md"
 
       - name: Upload Linux release asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: dist/KoboHighlightsExporter-${{ github.event.release.tag_name }}-Linux.tar.gz
-          asset_name: KoboHighlightsExporter-${{ github.ref_name }}-Linux.tar.gz
+          asset_name: KoboHighlightsExporter-${{ github.event.release.tag_name }}-Linux.tar.gz
           asset_content_type: application/gzip
