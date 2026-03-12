@@ -2,7 +2,7 @@ name: Build Desktop App
 
 on:
   push:
-    branches: [ main ]
+    branches: [ created ]
   workflow_dispatch:
 
 jobs:
@@ -29,6 +29,19 @@ jobs:
         run: |
           pyinstaller "Kobo Highlights Exporter.spec"
 
+      - name: Zip macOS app
+        run: |
+          cd dist
+          zip -r "Kobo Highlights Exporter.app.zip" "Kobo Highlights Exporter.app"
+      
+      - name: Upload macOS release asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/Kobo\ Highlights\ Exporter.app.zip
+          asset_name: Kobo\ Highlights\ Exporter.app.zip
+          asset_content_type: application/zip
+    
       - name: Upload macOS artifact
         uses: actions/upload-artifact@v4
         with:
@@ -55,6 +68,19 @@ jobs:
       - name: Build Linux binary
         run: |
           pyinstaller "Kobo Highlights Exporter.spec"
+
+      - name: Zip Linux binary
+        run: |
+          cd dist
+          zip "Kobo Highlights Exporter-linux.zip" "Kobo Highlights Exporter"
+      
+      - name: Upload Linux release asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/Kobo\ Highlights\ Exporter-linux.zip
+          asset_name: Kobo\ Highlights\ Exporter-linux.zip
+          asset_content_type: application/zip
 
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
