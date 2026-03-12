@@ -53,7 +53,7 @@ How Kobo Highlights Exporter does it better
 Done! Now you have your highlights in a `Book Title.md` format for you to handle however you want.
 
 <p align="center">  
-<img src="docs/images/usage.png" width="750">  
+<img src="docs/images/usage.png" width="900">  
 </p>
 
 ## 🎯 Features
@@ -83,7 +83,7 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 >ℹ️ *PDF files are not supported.*
 
 <p align="center">  
-<img src="docs/images/output.png" width="750">  
+<img src="docs/images/output.png" width="900">  
 </p>
 
 🎁 Bonus feature: Export from a friend's Kobo database!
@@ -95,7 +95,7 @@ Even if you **don’t have the device**, you can export highlights if your frien
 3. Search for the copy of `KoboReader.sqlite` (must be named exactly)  
 4. Export highlights normally
 <p align="center">  
-<img src="docs/images/bonusfeature.png" width="750">  
+<img src="docs/images/bonusfeature.png" width="900">  
 </p>
 
 >ℹ️ Limitations for the bonus feature:
@@ -184,12 +184,10 @@ Why it works especially well:
 - 🔄 No need to constantly import files.
 - 📑 **Clean PDF export** directly from Obsidian.
 - 🧠 If you keep the same Vault, Kobo Highlights Exporter **updates files with new highlights without creating duplicates**.
-
-> ⚠️ **Note for Notion users:** color labels for highlights are currently **not visible in Notion**.
-
 <p align="center">  
-<img src="docs/images/obsidian.png" width="750">  
+<img src="docs/images/obsidian.png" width="900">  
 </p>
+> ⚠️ **Note for Notion users:** color labels for highlights are currently **not visible in Notion**.
 
 ## 💗 Support
 
