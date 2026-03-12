@@ -3,7 +3,7 @@
 Extract and export highlights and notes from your Kobo eReader into Markdown files.
 
 <p align="center">  
-<img src="docs/images/header.png" width="700">  
+<img src="docs/images/header.png" width="900">  
 </p>
 
 <details open>
