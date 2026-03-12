@@ -36,7 +36,7 @@ How Kobo Highlights Exporter does it better
 ✅️ Precise book location (%)  
 ✅️ Precise chapter location (%)  
 ✅️ Correct chapter titles  
-✅️ Supports most books  
+✅️ Supports all books  
 ✅️ Colored highlights supported  
 ✅️ Works offline  
 ✅️ Free!  
@@ -91,7 +91,7 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 Even if you **don’t have the device**, you can export highlights if your friend sends you a copy of their database (`KoboReader.sqlite` inside `.kobo`).
 
 1. Launch the app (no Kobo device needed)  
-2. Click `Browse for Kobo file`  
+2. Click `Select Kobo Database`  
 3. Search for the copy of `KoboReader.sqlite` (must be named exactly)  
 4. Export highlights normally
 <p align="center">  
