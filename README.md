@@ -79,8 +79,8 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 |   Sideloaded EPUB      |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
 |        ADE             |         ✅         |          ❌           |       ✅        |   ✅   |  ✅   |   ✅   |
 
->🛈 *Kobo's database treats EPUBs differently from KEPUBs, so chapter location (%) is not available for EPUBs.*   
->🛈 *PDF files are not supported.*
+>ℹ️ *Kobo's database treats EPUBs differently from KEPUBs, so chapter location (%) is not available for EPUBs.*   
+>ℹ️ *PDF files are not supported.*
 
 <p align="center">  
 <img src="docs/images/output.png" width="750">  
@@ -98,7 +98,7 @@ Even if you **don’t have the device**, you can export highlights if your frien
 <img src="docs/images/bonusfeature.png" width="750">  
 </p>
 
->🛈 Limitations for the bonus feature:
+>ℹ️ Limitations for the bonus feature:
 >- For **sideloaded books**, the database may lack correct chapter titles linked to the highlights, resulting in **'Unknown chapter'**.  In these cases, the app may need a **connected Kobo** to read the TOC directly from the book to find the real chapter title.
 >- The tool is intended to work **optimally** when the Kobo device is connected.    
 >- There are **no limitations** for **Kobo Store** and **Overdrive** books  👌
@@ -129,7 +129,7 @@ Kobo stores highlights in a **SQLite database** on the device: `.kobo/KoboReader
 - Chapter location %  
 - Color labels (for color device users)
 
-> 🛈 Kobo Highlights Exporter **never** opens or modifies your original database.  
+> ℹ️ Kobo Highlights Exporter **never** opens or modifies your original database.  
 > The app works with a **temporary copy**, so your Kobo device remains completely safe.
 
 ### Handling Sideloaded Books
