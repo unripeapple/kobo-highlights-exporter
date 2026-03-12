@@ -1,9 +1,8 @@
 name: Build Desktop App
 
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [created]
   workflow_dispatch:
 
 jobs:
@@ -33,7 +32,7 @@ jobs:
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: dist/Kobo\ Highlights\ Exporter.exe
-          asset_name: KoboHighlightsExporter-${{ github.ref_name }}-Windows-x64.exe
+          asset_name: KoboHighlightsExporter-${{ github.event.release.tag_name }}-Windows-x64.exe
           asset_content_type: application/vnd.microsoft.portable-executable
 
   build-macos:
@@ -61,12 +60,13 @@ jobs:
         run: |
           cd dist
           zip -r KoboHighlightsExporter-${{ github.ref_name }}-macOS.zip "Kobo Highlights Exporter.app"
+          "../../README.md"
 
       - name: Upload macOS release asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: dist/KoboHighlightsExporter-${{ github.ref_name }}-macOS.zip
+          asset_path: dist/KoboHighlightsExporter-${{ github.event.release.tag_name }}-macOS.zip
           asset_name: KoboHighlightsExporter-${{ github.ref_name }}-macOS.zip
           asset_content_type: application/zip
 
@@ -95,11 +95,12 @@ jobs:
         run: |
           cd dist
           tar czf KoboHighlightsExporter-${{ github.ref_name }}-Linux.tar.gz "Kobo Highlights Exporter"
+          "../../README.md"
 
       - name: Upload Linux release asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: dist/KoboHighlightsExporter-${{ github.ref_name }}-Linux.tar.gz
+          asset_path: dist/KoboHighlightsExporter-${{ github.event.release.tag_name }}-Linux.tar.gz
           asset_name: KoboHighlightsExporter-${{ github.ref_name }}-Linux.tar.gz
           asset_content_type: application/gzip
