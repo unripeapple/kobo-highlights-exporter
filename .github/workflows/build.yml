@@ -1,116 +1,82 @@
-name: Build Desktop App
-concurrency:
-  group: build-desktop
-  cancel-in-progress: true
-
-permissions:
-  contents: write
+name: Build macOS and Linux
 
 on:
-  release:
-    types: [created]
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  # macOS
   build-macos:
     runs-on: macos-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pyinstaller
-
-      - name: Build with PyInstaller
-        run: pyinstaller "KoboHighlightsExporter.spec"
-
-      - name: Build DMG
         run: |
-          brew install create-dmg
-          mkdir -p dmg
-          cp -r "dist/KoboHighlightsExporter.app" dmg/
-          create-dmg \
-            --volname "Kobo Highlights Exporter" \
-            --window-pos 200 120 \
-            --window-size 800 400 \
-            --icon-size 100 \
-            --app-drop-link 600 185 \
-            KoboHighlightsExporter.dmg \
-            dmg/
+          python -m pip install --upgrade pip
+          pip install pyinstaller dmgbuild
+
+      - name: Build .app with PyInstaller
+        run: |
+          pyinstaller src/kobo_exporter/KoboHighlightsExporter.spec
+          # Move the built .app for packaging
+          mv dist/"Kobo Highlights Exporter".app dist/KoboHighlightsExporter.app
+
+      - name: Create DMG
+        run: |
+          mkdir -p dist/dmg_temp
+          cp -R dist/KoboHighlightsExporter.app dist/dmg_temp/
+          dmgbuild -s -D APP_NAME="KoboHighlightsExporter" -D APP_PATH="dist/dmg_temp/KoboHighlightsExporter.app" "KoboHighlightsExporter" dist/KoboHighlightsExporter-macOS.dmg
 
       - name: Upload macOS artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: KoboHighlightsExporter-macOS
-          path: KoboHighlightsExporter.dmg
+          path: dist/KoboHighlightsExporter-macOS.dmg
 
-      - name: Upload macOS release asset
-        if: github.event_name == 'release'
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: KoboHighlightsExporter.dmg
-          asset_name: KoboHighlightsExporter.dmg
-          asset_content_type: application/x-apple-diskimage
-
-  # Linux
   build-linux:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pyinstaller
-
-      - name: Build with PyInstaller
-        run: pyinstaller "KoboHighlightsExporter.spec"
-
-      - name: Install LinuxDeploy and dependencies
         run: |
-          sudo apt-get update -y && sudo apt-get install -y libfuse2 wget xz-utils
+          python -m pip install --upgrade pip
+          pip install pyinstaller appimage-builder
 
-          # Use pinned working versions
-          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -O linuxdeploy.AppImage
-          wget https://github.com/linuxdeploy/linuxdeploy-plugin-python/releases/download/continuous/linuxdeploy-plugin-python-x86_64.AppImage -O linuxdeploy-plugin-python.AppImage
-
-          chmod +x linuxdeploy.AppImage linuxdeploy-plugin-python.AppImage
-
-      - name: Build AppImage
+      - name: Build executable with PyInstaller
         run: |
-          mkdir -p AppDir
-          cp -r dist/* AppDir/
-          ./linuxdeploy.AppImage --appdir AppDir --plugin python --output appimage
+          pyinstaller src/kobo_exporter/KoboHighlightsExporter.spec
+          mv dist/"Kobo Highlights Exporter" dist/KoboHighlightsExporter
 
-      - name: Rename AppImage
-        run: mv *.AppImage KoboHighlightsExporter.AppImage
+      - name: Create AppImage
+        run: |
+          mkdir -p appimage
+          cp -r dist/KoboHighlightsExporter appimage/
+          # Create AppDir structure
+          mkdir -p appimage/KoboHighlightsExporter.AppDir/usr/bin
+          mv appimage/KoboHighlightsExporter appimage/KoboHighlightsExporter.AppDir/usr/bin/
+          # Minimal AppRun launcher
+          echo -e '#!/bin/bash\nexec "$(dirname "$0")/usr/bin/KoboHighlightsExporter"' > appimage/KoboHighlightsExporter.AppDir/AppRun
+          chmod +x appimage/KoboHighlightsExporter.AppDir/AppRun
+          # Create AppImage
+          wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
+          chmod +x appimagetool
+          ./appimagetool appimage/KoboHighlightsExporter.AppDir dist/KoboHighlightsExporter-linux.AppImage
 
       - name: Upload Linux artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-          name: KoboHighlightsExporter-Linux
-          path: KoboHighlightsExporter.AppImage
-
-      - name: Upload Linux release asset
-        if: github.event_name == 'release'
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: KoboHighlightsExporter.AppImage
-          asset_name: KoboHighlightsExporter.AppImage
-          asset_content_type: application/octet-stream
+          name: KoboHighlightsExporter-linux
+          path: dist/KoboHighlightsExporter-linux.AppImage
