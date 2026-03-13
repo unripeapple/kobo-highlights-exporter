@@ -29,16 +29,16 @@ jobs:
         run: pip install -r requirements.txt pyinstaller
 
       - name: Build with PyInstaller
-        run: pyinstaller "Kobo Highlights Exporter.spec"
+        run: pyinstaller --windowed "KoboHighlightsExporter.spec"
 
-
+      # macOS DMG step
       - name: Build DMG (macOS)
         if: runner.os == 'macOS'
         run: |
           brew install create-dmg
 
-          mkdir dmg
-          cp -r dist/*.app dmg/
+          mkdir -p dmg
+          cp -r "dist/Kobo Highlights Exporter.app" dmg/
 
           create-dmg \
             --volname "Kobo Highlights Exporter" \
@@ -67,7 +67,7 @@ jobs:
           asset_name: KoboHighlightsExporter.dmg
           asset_content_type: application/x-apple-diskimage
 
-
+      # Linux AppImage step
       - name: Build AppImage (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -90,8 +90,7 @@ jobs:
 
       - name: Rename AppImage
         if: runner.os == 'Linux'
-        run: |
-          mv *.AppImage KoboHighlightsExporter.AppImage
+        run: mv *.AppImage KoboHighlightsExporter.AppImage
 
       - name: Upload Linux artifact
         if: runner.os == 'Linux'
