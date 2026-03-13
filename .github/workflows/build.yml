@@ -85,8 +85,7 @@ jobs:
 
       - name: Build AppImage
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y libfuse2 wget
+          sudo apt-get update -y && sudo apt-get install -y libfuse2 wget
 
           wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
           wget https://github.com/linuxdeploy/linuxdeploy-plugin-python/releases/download/continuous/linuxdeploy-plugin-python-x86_64.AppImage
