@@ -110,11 +110,11 @@ Download the app from [releases](https://github.com/unripeapple/kobo-highlights-
 
 Kobo Highlights Exporter is available for:
 
-| OS      | Version Requirement           | Notes                  |
+| OS      | Version Requirement           | Availability                 |
 |:---------:|:------------------------------:|:-----------------------:|
-| 🪟 Windows | 10 or newer (x64)            | Run the .exe file     |
-| 🍎 macOS   | 11 (Big Sur) or newer (x64) | Unzip the .app bundle |
-| 🐧 Linux   | 64-bit (Ubuntu 22.04+, other modern distros) | Unzip and run the binary |
+| 🪟 Windows | 10 or newer (x64)            | ✅️ Yes    |
+| 🍎 macOS   | - | 🕓 Coming soon |
+| 🐧 Linux   | - | 🕓 Coming soon |
 
 
 ## 🪄 How It Works
