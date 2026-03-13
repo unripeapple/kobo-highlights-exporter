@@ -1,5 +1,8 @@
 name: Build Desktop App
 
+permissions:
+  contents: write
+
 on:
   release:
     types: [created]
