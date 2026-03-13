@@ -5,7 +5,11 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+    
+concurrency:
+  group: my-new-workflow
+  cancel-in-progress: false
+  
 jobs:
   build-macos:
     runs-on: macos-latest
