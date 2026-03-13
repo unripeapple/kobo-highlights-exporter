@@ -39,7 +39,7 @@ jobs:
           dmgbuild -s -D APP_NAME="KoboHighlightsExporter" -D APP_PATH="dist/dmg_temp/KoboHighlightsExporter.app" "KoboHighlightsExporter" dist/KoboHighlightsExporter-macOS.dmg
 
       - name: Upload macOS artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: KoboHighlightsExporter-macOS
           path: dist/KoboHighlightsExporter-macOS.dmg
@@ -80,7 +80,7 @@ jobs:
           ./appimagetool appimage/KoboHighlightsExporter.AppDir dist/KoboHighlightsExporter-linux.AppImage
 
       - name: Upload Linux artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: KoboHighlightsExporter-linux
           path: dist/KoboHighlightsExporter-linux.AppImage
