@@ -6,12 +6,15 @@ datas = collect_data_files('assets')
 
 a = Analysis(
     ['src/kobo_exporter/main.py'],
-    pathex=['src'],
+    pathex=['.'],  # <- point to repo root
     binaries=[],
     datas=datas,
     hiddenimports=[
         "PIL._tkinter_finder",
         "PIL.ImageTk",
+    ],
+    ...
+)
     ],
     hookspath=[],
     hooksconfig={},
@@ -28,7 +31,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='Kobo Highlights Exporter',
+    name='KoboHighlightsExporter',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
