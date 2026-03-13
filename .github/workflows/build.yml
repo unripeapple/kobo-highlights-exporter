@@ -9,12 +9,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest]
-
-    runs-on: ${{ matrix.os }}
+  # macOS job
+  build-macos:
+    runs-on: macos-latest
 
     steps:
       - name: Checkout repository
@@ -31,9 +28,7 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller --windowed "KoboHighlightsExporter.spec"
 
-      # macOS DMG step
-      - name: Build DMG (macOS)
-        if: runner.os == 'macOS'
+      - name: Build DMG
         run: |
           brew install create-dmg
 
@@ -50,14 +45,13 @@ jobs:
             dmg/
 
       - name: Upload macOS artifact
-        if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
           name: KoboHighlightsExporter-macOS
           path: KoboHighlightsExporter.dmg
 
       - name: Upload macOS release asset
-        if: runner.os == 'macOS' && github.event_name == 'release'
+        if: github.event_name == 'release'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -67,9 +61,26 @@ jobs:
           asset_name: KoboHighlightsExporter.dmg
           asset_content_type: application/x-apple-diskimage
 
-      # Linux AppImage step
-      - name: Build AppImage (Linux)
-        if: runner.os == 'Linux'
+  # Linux job
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt pyinstaller
+
+      - name: Build with PyInstaller
+        run: pyinstaller "KoboHighlightsExporter.spec"
+
+      - name: Build AppImage
         run: |
           sudo apt update
           sudo apt install -y libfuse2 wget
@@ -89,18 +100,16 @@ jobs:
             --output appimage
 
       - name: Rename AppImage
-        if: runner.os == 'Linux'
         run: mv *.AppImage KoboHighlightsExporter.AppImage
 
       - name: Upload Linux artifact
-        if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
         with:
           name: KoboHighlightsExporter-Linux
           path: KoboHighlightsExporter.AppImage
 
       - name: Upload Linux release asset
-        if: runner.os == 'Linux' && github.event_name == 'release'
+        if: github.event_name == 'release'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
