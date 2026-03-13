@@ -30,11 +30,12 @@ jobs:
       - name: Package
         run: |
           cp README.md dist/
-          cd dist
           if [[ "${{ runner.os }}" == "macOS" ]]; then
-            zip -r KoboHighlightsExporter-macOS.zip .
+            cd dist
+            zip -r ../KoboHighlightsExporter-macOS.zip .
           else
-            tar czf KoboHighlightsExporter-Linux.tar.gz .
+            cd dist
+            tar czf ../KoboHighlightsExporter-Linux.tar.gz .
           fi
 
       - name: Upload macOS asset
@@ -44,7 +45,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: dist/KoboHighlightsExporter-macOS.zip
+          asset_path: KoboHighlightsExporter-macOS.zip
           asset_name: KoboHighlightsExporter-macOS.zip
           asset_content_type: application/zip
 
@@ -55,6 +56,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: dist/KoboHighlightsExporter-Linux.tar.gz
+          asset_path: KoboHighlightsExporter-Linux.tar.gz
           asset_name: KoboHighlightsExporter-Linux.tar.gz
           asset_content_type: application/gzip
