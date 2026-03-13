@@ -1,5 +1,3 @@
-# -*- mode: python ; coding: utf-8 -*-
-
 from PyInstaller.utils.hooks import collect_data_files
 from PyInstaller.building.build_main import Analysis, PYZ, EXE, COLLECT
 
@@ -7,7 +5,7 @@ datas = collect_data_files('assets')
 
 a = Analysis(
     ['src/kobo_exporter/main.py'],
-    pathex=['.'],  
+    pathex=['.'],
     binaries=[],
     datas=datas,
     hiddenimports=[
@@ -15,32 +13,23 @@ a = Analysis(
         "PIL.ImageTk",
     ],
     hookspath=[],
-    hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    noarchive=False,
-    optimize=0,
 )
 
-pyz = PYZ(a.pure)
+pyz = PYZ(a.pure, a.zipped_data, cipher=None)
 
 exe = EXE(
     pyz,
     a.scripts,
-    [],
-    exclude_binaries=False,  
+    a.binaries,      # include binaries here
     name='KoboHighlightsExporter',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
     console=False,
-    disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
-    icon=['assets/app_icon.icns'],
+    icon='assets/app_icon.icns',
 )
 
 coll = COLLECT(
@@ -49,6 +38,5 @@ coll = COLLECT(
     a.datas,
     strip=False,
     upx=True,
-    upx_exclude=[],
     name='KoboHighlightsExporter',
 )
