@@ -59,3 +59,11 @@ jobs:
           asset_path: KoboHighlightsExporter-Linux.tar.gz
           asset_name: KoboHighlightsExporter-Linux.tar.gz
           asset_content_type: application/gzip
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: desktop-build
+          path: |
+            KoboHighlightsExporter-macOS.zip
+            KoboHighlightsExporter-Linux.tar.gz
