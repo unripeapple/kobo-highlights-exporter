@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# PyInstaller
+/dist/
+/build/
+
+# Installer
+/dist_installer/
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+dist/
+*.zip
+*.tar.gz
+*.exe
