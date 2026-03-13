@@ -17,59 +17,96 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - run: pip install -r requirements.txt pyinstaller
+      - name: Install dependencies
+        run: pip install -r requirements.txt pyinstaller
 
-      - run: pyinstaller "Kobo Highlights Exporter.spec"
+      - name: Build with PyInstaller
+        run: pyinstaller "Kobo Highlights Exporter.spec"
 
-      - name: Package
+
+      - name: Build DMG (macOS)
+        if: runner.os == 'macOS'
         run: |
-          cp README.md dist/
-          if [[ "${{ runner.os }}" == "macOS" ]]; then
-            cd dist
-            zip -r ../KoboHighlightsExporter-macOS.zip .
-          else
-            cd dist
-            tar czf ../KoboHighlightsExporter-Linux.tar.gz .
-          fi
+          brew install create-dmg
 
-      - name: Upload macOS asset
+          mkdir dmg
+          cp -r dist/*.app dmg/
+
+          create-dmg \
+            --volname "Kobo Highlights Exporter" \
+            --window-pos 200 120 \
+            --window-size 800 400 \
+            --icon-size 100 \
+            --app-drop-link 600 185 \
+            KoboHighlightsExporter.dmg \
+            dmg/
+
+      - name: Upload macOS artifact
+        if: runner.os == 'macOS'
+        uses: actions/upload-artifact@v4
+        with:
+          name: KoboHighlightsExporter-macOS
+          path: KoboHighlightsExporter.dmg
+
+      - name: Upload macOS release asset
         if: runner.os == 'macOS' && github.event_name == 'release'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: KoboHighlightsExporter-macOS.zip
-          asset_name: KoboHighlightsExporter-macOS.zip
-          asset_content_type: application/zip
+          asset_path: KoboHighlightsExporter.dmg
+          asset_name: KoboHighlightsExporter.dmg
+          asset_content_type: application/x-apple-diskimage
 
-      - name: Upload Linux asset
+
+      - name: Build AppImage (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt update
+          sudo apt install -y libfuse2 wget
+
+          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+          wget https://github.com/linuxdeploy/linuxdeploy-plugin-python/releases/download/continuous/linuxdeploy-plugin-python-x86_64.AppImage
+
+          chmod +x linuxdeploy-x86_64.AppImage
+          chmod +x linuxdeploy-plugin-python-x86_64.AppImage
+
+          mkdir AppDir
+          cp -r dist/* AppDir/
+
+          ./linuxdeploy-x86_64.AppImage \
+            --appdir AppDir \
+            --plugin python \
+            --output appimage
+
+      - name: Rename AppImage
+        if: runner.os == 'Linux'
+        run: |
+          mv *.AppImage KoboHighlightsExporter.AppImage
+
+      - name: Upload Linux artifact
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: KoboHighlightsExporter-Linux
+          path: KoboHighlightsExporter.AppImage
+
+      - name: Upload Linux release asset
         if: runner.os == 'Linux' && github.event_name == 'release'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: KoboHighlightsExporter-Linux.tar.gz
-          asset_name: KoboHighlightsExporter-Linux.tar.gz
-          asset_content_type: application/gzip
-
-      - name: Upload build artifacts
-        if: runner.os == 'macOS'
-        uses: actions/upload-artifact@v4
-        with:
-          name: KoboHighlightsExporter-macOS
-          path: KoboHighlightsExporter-macOS.zip
-      
-      - name: Upload build artifacts
-        if: runner.os == 'Linux'
-        uses: actions/upload-artifact@v4
-        with:
-          name: KoboHighlightsExporter-Linux
-          path: KoboHighlightsExporter-Linux.tar.gz
+          asset_path: KoboHighlightsExporter.AppImage
+          asset_name: KoboHighlightsExporter.AppImage
+          asset_content_type: application/octet-stream
