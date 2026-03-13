@@ -20,27 +20,21 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install pyinstaller
+      - run: pip install -r requirements.txt pyinstaller
 
-      - name: Build app
-        run: pyinstaller "Kobo Highlights Exporter.spec"
+      - run: pyinstaller "Kobo Highlights Exporter.spec"
 
-      - name: Prepare package
+      - name: Package
         run: |
           cp README.md dist/
           cd dist
-
           if [[ "${{ runner.os }}" == "macOS" ]]; then
-            zip -r KoboHighlightsExporter-${{ github.ref_name }}-macOS.zip .
+            zip -r KoboHighlightsExporter-macOS.zip .
           else
-            tar czf KoboHighlightsExporter-${{ github.ref_name }}-Linux.tar.gz .
+            tar czf KoboHighlightsExporter-Linux.tar.gz .
           fi
 
-      - name: Upload Release Asset
-        uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v2
         with:
           files: |
             dist/*.zip
