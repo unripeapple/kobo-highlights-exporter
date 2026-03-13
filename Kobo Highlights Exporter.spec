@@ -6,7 +6,10 @@ a = Analysis(
     pathex=['src'],
     binaries=[],
     datas=[('assets', 'assets')],
-    hiddenimports=[],
+    hiddenimports=[
+        "PIL._tkinter_finder",
+        "PIL.ImageTk",
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -43,3 +46,4 @@ coll = COLLECT(
     upx_exclude=[],
     name='Kobo Highlights Exporter',
 )
+
