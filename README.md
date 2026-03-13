@@ -112,9 +112,9 @@ Kobo Highlights Exporter is available for:
 
 | OS      | Version Requirement           | Availability                 |
 |:---------:|:------------------------------:|:-----------------------:|
-| 🪟 Windows | 10 or newer (x64)            | ✅️ Yes    |
-| 🍎 macOS   | - | 🕓 Coming soon |
-| 🐧 Linux   | - | 🕓 Coming soon |
+| 🪟 Windows | 10 or newer (x64)            | ✅️Yes    |
+| 🍎 macOS   | - | 🕓 Coming soon! |
+| 🐧 Linux   | - | 🕓 Coming soon! |
 
 
 ## 🪄 How It Works
@@ -211,10 +211,6 @@ If you enjoy **Kobo Highlights Exporter**, you can give the project some love:
 - ☕ **Opening the donation page** when you click the `Donate` button  
   
 No highlights, books or personal data are ever uploaded. **Everything else stays local on your computer.**
-
-## 🏅 Acknowledgments
-
-- @username — Beta collaborator who helped test early versions, reported bugs, and suggested improvements.
  
 ## 🧾 License
 
