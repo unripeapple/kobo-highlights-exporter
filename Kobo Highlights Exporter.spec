@@ -1,11 +1,14 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+from PyInstaller.utils.hooks import collect_data_files
+
+datas = collect_data_files('assets') 
 
 a = Analysis(
     ['src/kobo_exporter/main.py'],
     pathex=['src'],
     binaries=[],
-    datas=[('assets', 'assets')],
+    datas=datas,
     hiddenimports=[
         "PIL._tkinter_finder",
         "PIL.ImageTk",
@@ -17,6 +20,7 @@ a = Analysis(
     noarchive=False,
     optimize=0,
 )
+
 pyz = PYZ(a.pure)
 
 exe = EXE(
@@ -29,14 +33,15 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,
+    console=False, 
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['assets/app_icon.ico'],
+    icon=['assets/app_icon.icns'], 
 )
+
 coll = COLLECT(
     exe,
     a.binaries,
@@ -46,4 +51,5 @@ coll = COLLECT(
     upx_exclude=[],
     name='Kobo Highlights Exporter',
 )
+
 
