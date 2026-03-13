@@ -64,12 +64,12 @@ jobs:
         if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-build-macos
+          name: KoboHighlightsExporter-macOS.zip
           path: KoboHighlightsExporter-macOS.zip
       
       - name: Upload build artifacts
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-build-linux
+          name: KoboHighlightsExporter-Linux.tar.gz
           path: KoboHighlightsExporter-Linux.tar.gz
