@@ -2,8 +2,8 @@ name: Build Desktop App
 
 on:
   release:
-    types: [created]
-  workflow_dispatch:
+    types: [created]  # Trigger when a GitHub release is created
+  workflow_dispatch:  # Optional manual trigger
 
 jobs:
   build-macos:
@@ -25,14 +25,12 @@ jobs:
           pip install pyinstaller
 
       - name: Build macOS binary
-        run: pyinstaller "Kobo Highlights Exporter.spec"
+        run: |
+          pyinstaller "Kobo Highlights Exporter.spec"
 
-      - name: Copy README into dist
+      - name: Prepare macOS zip
         run: |
           cp README.md dist/
-
-      - name: Zip macOS binary + README
-        run: |
           cd dist
           zip -r KoboHighlightsExporter-${{ github.event.release.tag_name }}-macOS.zip "Kobo Highlights Exporter" README.md
 
@@ -63,14 +61,12 @@ jobs:
           pip install pyinstaller
 
       - name: Build Linux binary
-        run: pyinstaller "Kobo Highlights Exporter.spec"
+        run: |
+          pyinstaller "Kobo Highlights Exporter.spec"
 
-      - name: Copy README into dist
+      - name: Prepare Linux tar.gz
         run: |
           cp README.md dist/
-
-      - name: Tar Linux binary + README
-        run: |
           cd dist
           tar czf KoboHighlightsExporter-${{ github.event.release.tag_name }}-Linux.tar.gz "Kobo Highlights Exporter" README.md
 
