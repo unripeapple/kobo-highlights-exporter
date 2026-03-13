@@ -69,7 +69,7 @@ Kobo Highlights Exporter makes exporting your highlights and notes **fast, flexi
 - ⚡ Fast and lightweight  
 - 🖥 Works offline
 
-📊 What you can export from your books (besides highlights)
+📊 Supported books
 
 |       Book Type        | Book location (%) | Chapter location (%)    | Chapter Titles   | Notes  | Date  | Color |
 | :--------------------: | :---------------: | :------------------:    | :------------:   | :---:  | :--:   | :---: |
@@ -190,8 +190,6 @@ Why it works especially well:
 <p align="center">  
 <img src="docs/images/obsidian.png" width="900">  
 </p>
-
-> ⚠️ **Note for Notion users:** color labels for highlights are currently **not visible in Notion**.
 
 ## 💗 Support
 
