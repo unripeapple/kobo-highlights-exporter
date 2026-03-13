@@ -6,8 +6,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-macos:
-    runs-on: macos-latest
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
@@ -21,52 +25,23 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: Build macOS
+      - name: Build app
         run: pyinstaller "Kobo Highlights Exporter.spec"
 
-      - name: Debug dist contents
-        run: ls -R dist
-
-      - name: Package macOS
+      - name: Prepare package
         run: |
           cp README.md dist/
           cd dist
-          zip -r KoboHighlightsExporter-${{ github.event.release.tag_name }}-macOS.zip .
 
-      - name: Upload macOS asset
+          if [[ "${{ runner.os }}" == "macOS" ]]; then
+            zip -r KoboHighlightsExporter-${{ github.ref_name }}-macOS.zip .
+          else
+            tar czf KoboHighlightsExporter-${{ github.ref_name }}-Linux.tar.gz .
+          fi
+
+      - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/KoboHighlightsExporter-${{ github.event.release.tag_name }}-macOS.zip
-
-
-  build-linux:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install pyinstaller
-
-      - name: Build Linux
-        run: pyinstaller "Kobo Highlights Exporter.spec"
-
-      - name: Debug dist contents
-        run: ls -R dist
-
-      - name: Package Linux
-        run: |
-          cp README.md dist/
-          cd dist
-          tar czf KoboHighlightsExporter-${{ github.event.release.tag_name }}-Linux.tar.gz .
-
-      - name: Upload Linux asset
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/KoboHighlightsExporter-${{ github.event.release.tag_name }}-Linux.tar.gz
+          files: |
+            dist/*.zip
+            dist/*.tar.gz
