@@ -34,8 +34,24 @@ jobs:
             tar czf KoboHighlightsExporter-Linux.tar.gz .
           fi
 
-      - uses: softprops/action-gh-release@v2
+      - name: Upload macOS asset
+        if: runner.os == 'macOS'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: |
-            dist/*.zip
-            dist/*.tar.gz
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/KoboHighlightsExporter-macOS.zip
+          asset_name: KoboHighlightsExporter-macOS.zip
+          asset_content_type: application/zip
+
+      - name: Upload Linux asset
+        if: runner.os == 'Linux'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/KoboHighlightsExporter-Linux.tar.gz
+          asset_name: KoboHighlightsExporter-Linux.tar.gz
+          asset_content_type: application/gzip
