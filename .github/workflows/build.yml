@@ -1,13 +1,14 @@
 name: Build macOS and Linux
 
 on:
+  workflow_dispatch:   # Allows manual runs from Actions tab
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
     
 concurrency:
-  group: my-new-workflow
+  group: KoboHighlightsExporter-build
   cancel-in-progress: false
   
 jobs:
@@ -28,8 +29,7 @@ jobs:
 
       - name: Build .app with PyInstaller
         run: |
-          pyinstaller src/kobo_exporter/KoboHighlightsExporter.spec
-          # Move the built .app for packaging
+          pyinstaller KoboHighlightsExporter.spec
           mv dist/"Kobo Highlights Exporter".app dist/KoboHighlightsExporter.app
 
       - name: Create DMG
@@ -61,20 +61,17 @@ jobs:
 
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/kobo_exporter/KoboHighlightsExporter.spec
+          pyinstaller KoboHighlightsExporter.spec
           mv dist/"Kobo Highlights Exporter" dist/KoboHighlightsExporter
 
       - name: Create AppImage
         run: |
           mkdir -p appimage
           cp -r dist/KoboHighlightsExporter appimage/
-          # Create AppDir structure
           mkdir -p appimage/KoboHighlightsExporter.AppDir/usr/bin
           mv appimage/KoboHighlightsExporter appimage/KoboHighlightsExporter.AppDir/usr/bin/
-          # Minimal AppRun launcher
           echo -e '#!/bin/bash\nexec "$(dirname "$0")/usr/bin/KoboHighlightsExporter"' > appimage/KoboHighlightsExporter.AppDir/AppRun
           chmod +x appimage/KoboHighlightsExporter.AppDir/AppRun
-          # Create AppImage
           wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
           chmod +x appimagetool
           ./appimagetool appimage/KoboHighlightsExporter.AppDir dist/KoboHighlightsExporter-linux.AppImage
