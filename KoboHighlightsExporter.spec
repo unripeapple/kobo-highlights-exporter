@@ -5,7 +5,6 @@ from PyInstaller.utils.hooks import collect_submodules
 import glob
 import os
 
-
 datas = [(f, "assets") for f in glob.glob("assets/**/*", recursive=True) if os.path.isfile(f)]
 
 hiddenimports = [
@@ -31,16 +30,16 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=None)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
+    [],
+    exclude_binaries=True,  
     name='KoboHighlightsExporter',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False, 
+    console=False,
     icon='assets/app_icon.icns',
 )
-
 
 coll = COLLECT(
     exe,
