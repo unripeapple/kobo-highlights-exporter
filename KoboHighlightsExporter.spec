@@ -5,7 +5,7 @@ from PyInstaller.utils.hooks import collect_submodules
 import glob
 import os
 
-# Manually include assets folder
+
 datas = [(f, "assets") for f in glob.glob("assets/**/*", recursive=True) if os.path.isfile(f)]
 
 hiddenimports = [
@@ -16,7 +16,7 @@ hiddenimports = [
 a = Analysis(
     ['src/kobo_exporter/main.py'],
     pathex=['.'],
-    binaries=[],  # no extra binaries
+    binaries=[],  
     datas=datas,
     hiddenimports=hiddenimports,
     hookspath=[],
@@ -37,11 +37,11 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,  # GUI app
+    console=False, 
     icon='assets/app_icon.icns',
 )
 
-# COLLECT: do NOT pass the EXE folder! Only pass exe, datas, binaries
+
 coll = COLLECT(
     exe,
     a.binaries,
