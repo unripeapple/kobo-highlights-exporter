@@ -1,4 +1,7 @@
 name: Build Desktop App
+concurrency:
+  group: build-desktop
+  cancel-in-progress: true
 
 permissions:
   contents: write
