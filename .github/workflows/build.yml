@@ -61,9 +61,15 @@ jobs:
           asset_content_type: application/gzip
 
       - name: Upload build artifacts
+        if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-build
-          path: |
-            KoboHighlightsExporter-macOS.zip
-            KoboHighlightsExporter-Linux.tar.gz
+          name: desktop-build-macos
+          path: KoboHighlightsExporter-macOS.zip
+      
+      - name: Upload build artifacts
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-build-linux
+          path: KoboHighlightsExporter-Linux.tar.gz
