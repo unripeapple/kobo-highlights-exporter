@@ -42,7 +42,7 @@ jobs:
           fi
 
       - name: Upload macOS asset
-        if: runner.os == 'macOS'
+        if: runner.os == 'macOS' && github.event_name == 'release'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,7 +53,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload Linux asset
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && github.event_name == 'release'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
