@@ -1,3 +1,4 @@
+# KoboHighlightsExporter.spec
 from PyInstaller.utils.hooks import collect_data_files
 from PyInstaller.building.build_main import Analysis, PYZ, EXE, COLLECT
 
@@ -8,10 +9,7 @@ a = Analysis(
     pathex=['.'],
     binaries=[],
     datas=datas,
-    hiddenimports=[
-        "PIL._tkinter_finder",
-        "PIL.ImageTk",
-    ],
+    hiddenimports=["PIL._tkinter_finder", "PIL.ImageTk"],
     hookspath=[],
     runtime_hooks=[],
     excludes=[],
@@ -22,7 +20,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=None)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,      # include binaries here
+    a.binaries,  # crucial for COLLECT
     name='KoboHighlightsExporter',
     debug=False,
     bootloader_ignore_signals=False,
