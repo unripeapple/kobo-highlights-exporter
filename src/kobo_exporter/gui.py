@@ -96,7 +96,19 @@ from kobo_exporter.core import (
 
 import kobo_exporter.core as core
 
-SETTINGS_FILE = "settings.json"
+def get_settings_path():
+    if sys.platform.startswith("win"):
+        base = os.getenv("APPDATA")
+    elif sys.platform.startswith("darwin"):
+        base = os.path.expanduser("~/Library/Application Support")
+    else:
+        base = os.path.expanduser("~/.config")
+
+    app_dir = os.path.join(base, "KoboHighlightsExporter")
+    os.makedirs(app_dir, exist_ok=True)
+    return os.path.join(app_dir, "settings.json")
+
+SETTINGS_FILE = get_settings_path()
 
 ctk.set_appearance_mode("dark")
 
