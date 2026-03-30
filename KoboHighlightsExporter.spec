@@ -44,3 +44,10 @@ coll = COLLECT(
     name='Kobo Highlights Exporter',
 )
 
+app = BUNDLE(
+    coll,
+    name='Kobo Highlights Exporter.app',
+    icon='assets/app_icon.icns',
+    bundle_identifier='com.yourname.kobohighlightsexporter',
+)
+
