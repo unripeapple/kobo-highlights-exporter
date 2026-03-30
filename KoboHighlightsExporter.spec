@@ -1,6 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-
 a = Analysis(
     ['src/kobo_exporter/main.py'],
     pathex=['src'],
@@ -8,12 +7,12 @@ a = Analysis(
     datas=[('assets', 'assets')],
     hiddenimports=[],
     hookspath=[],
-    hooksconfig={},
     runtime_hooks=[],
     excludes=[],
     noarchive=False,
     optimize=0,
 )
+
 pyz = PYZ(a.pure)
 
 exe = EXE(
@@ -27,13 +26,13 @@ exe = EXE(
     strip=False,
     upx=True,
     console=False,
-    disable_windowed_traceback=False,
     argv_emulation=True,
-    target_arch="universal2",
+    target_arch="arm64",
     codesign_identity=None,
     entitlements_file=None,
-    icon=['assets/app_icon.ico'],
+    icon='assets/app_icon.icns',
 )
+
 coll = COLLECT(
     exe,
     a.binaries,
@@ -50,4 +49,3 @@ app = BUNDLE(
     icon='assets/app_icon.icns',
     bundle_identifier='com.yourname.kobohighlightsexporter',
 )
-
