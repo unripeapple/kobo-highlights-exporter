@@ -33,7 +33,7 @@ jobs:
             --background "assets/dmg-background.png" \
             --icon-size 100 \
             --app-drop-link 600 185 \
-            "KoboHighlightsExporter.dmg" \
+            "KoboHighlightsExporter_x86_64.dmg" \
             "dist/KoboHighlightsExporter.app"
 
       - name: Upload DMG
