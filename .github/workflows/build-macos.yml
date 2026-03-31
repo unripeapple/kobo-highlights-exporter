@@ -1,4 +1,4 @@
-name: Build macOS App
+name: Build macOS arm64 App
 
 on:
   workflow_dispatch:
@@ -33,7 +33,7 @@ jobs:
             --background "assets/dmg-background.png" \
             --icon-size 100 \
             --app-drop-link 600 185 \
-            "KoboHighlightsExporter.dmg" \
+            "KoboHighlightsExporter_arm64.dmg" \
             "dist/KoboHighlightsExporter.app"
 
       - name: Upload DMG
