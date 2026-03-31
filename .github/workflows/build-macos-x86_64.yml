@@ -1,0 +1,43 @@
+name: Build macOS App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+          brew install create-dmg
+
+      - name: Build app
+        run: |
+          pyinstaller KoboHighlightsExporter.spec
+
+      - name: Create DMG
+        run: |
+          create-dmg \
+            --volname "Kobo Highlights Exporter" \
+            --window-size 800 400 \
+            --background "assets/dmg-background.png" \
+            --icon-size 100 \
+            --app-drop-link 600 185 \
+            "KoboHighlightsExporter.dmg" \
+            "dist/KoboHighlightsExporter.app"
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: KoboHighlightsExporter-macOS
+          path: "*.dmg"
