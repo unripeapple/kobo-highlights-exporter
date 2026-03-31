@@ -23,7 +23,7 @@ jobs:
 
       - name: Build app
         run: |
-          pyinstaller KoboHighlightsExporter.spec
+          pyinstaller KoboHighlightsExporter_arm64macOS.spec
 
       - name: Create DMG
         run: |
