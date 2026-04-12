@@ -113,7 +113,7 @@ Kobo Highlights Exporter is available for:
 | OS      | Version Requirement           | Availability                 |
 |:---------:|:------------------------------:|:-----------------------:|
 | 🪟 Windows | 10 or newer (x64)            | ✅️Yes    |
-| 🍎 macOS   | Mac OS 14 or newer | ✅️Yes |
+| 🍎 macOS   | 14 or newer | ✅️Yes |
 | 🐧 Linux   | - | 🕓 Coming soon! |
 
 
