@@ -23,12 +23,15 @@ jobs:
         run: |
           python -c "import platform; print(platform.machine())"
 
+      # Install create-dmg using ARM Homebrew (do NOT use Rosetta)
+      - name: Install create-dmg
+        run: brew install create-dmg
+
       - name: Install dependencies (x86_64)
         run: |
           arch -x86_64 python -m pip install --upgrade pip
           arch -x86_64 python -m pip install -r requirements.txt
           arch -x86_64 python -m pip install pyinstaller
-          arch -x86_64 brew install create-dmg
 
       - name: Build app
         run: |
